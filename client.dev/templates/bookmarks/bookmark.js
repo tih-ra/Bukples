@@ -1,0 +1,1 @@
+(function(){Bukples.Templates['bookmarks.bookmark'] = new Kassit.Template.KUP("function(){h2(this.model.get(\"title\")),p(this.model.get(\"body\")),p(function(){return a({\"class\":\"btn\",href:\"#\"},\"View details &raquo;\")})}")}).call(this)

@@ -1,0 +1,30 @@
+{
+    "client": [
+        { "url": "lib/jquery.js" }
+,       { "url": "lib/underscore.js" }
+,       { "url": "lib/backbone.js" }
+,       { "url": "lib/coffeekup.js", "method": "none" }
+,       { "url": "lib/kassit.coffee"}
+
+,       { "url": "client.coffee" }
+
+,       { "url": "templates/root/layout.kup" }
+,       { "url": "templates/root/index.kup" }
+,       { "url": "views/root_view.coffee" }
+,       { "url": "routers/root_router.coffee" }
+
+,       { "url": "templates/bookmarks/index.kup" }
+,       { "url": "templates/bookmarks/new.kup" }
+,       { "url": "templates/bookmarks/bookmark.kup" }
+,       { "url": "views/bookmark_view.coffee" }
+,       { "url": "models/bookmark.coffee" }
+,       { "url": "collections/bookmarks.coffee" }
+
+,       { "url": "style/master.less" }
+
+
+    ]
+,   "server": [
+        { "url": "server.coffee" }
+    ]
+}

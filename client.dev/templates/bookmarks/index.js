@@ -1,0 +1,1 @@
+(function(){Bukples.Templates['bookmarks.index'] = new Kassit.Template.KUP("function(){div(function(){return h1(\"Bookmarks\")})}")}).call(this)

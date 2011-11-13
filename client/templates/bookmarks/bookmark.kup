@@ -1,0 +1,4 @@
+h2 @model.get('title')
+p @model.get('body')
+p ->
+  a class: 'btn', href: '#', 'View details &raquo;'
