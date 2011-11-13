@@ -17,10 +17,17 @@
       title: null
     };
     Bookmark.prototype.url = function() {
-      return "/bookmarks/" + (this.get('id'));
+      if (this.id) {
+        return "/bookmarks/" + this.id;
+      } else {
+        return "/bookmarks";
+      }
     };
-    Bookmark.prototype.validate = function(attr) {
-      return false;
+    Bookmark.prototype.toJSON = function() {
+      return {
+        body: this.get('body'),
+        title: this.get('title')
+      };
     };
     return Bookmark;
   })();

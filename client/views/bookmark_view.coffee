@@ -20,12 +20,14 @@ class Bookmark.Index extends Backbone.View
     view = new Bookmark.New(collection: @collection)
     $('#header').html(view.render())
 
-  addAll: ->
-    @collection.each(@addOne)	
-
+  
   addOne: (bookmark) ->
+    console.log(@collection)
     view = new Bookmark.Bookmark(model: bookmark)
     $('#bookmarks').prepend(view.render()) 
+
+  addAll: ->
+    @collection.each(@addOne)
 
   render: ->
     $(@el).html @template.render()
@@ -50,13 +52,15 @@ class Bookmark.New extends Backbone.View
 
   save: (e) ->
     e.preventDefault()
-
+     
     model = new Bukples.Models.Bookmark
-
-    model.set @attributes()
-    @collection.add model
-
     
+    model.save @attributes(),
+      success: (model, response) =>
+        @collection.add model
+
+      error: (model, errors) =>
+        console.log errors
 
   attributes: ->
     title: 'test title'

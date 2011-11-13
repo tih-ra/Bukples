@@ -8,8 +8,8 @@
 ,   "main": ""
 ,   "bin": {}
 ,   "dependencies": {
-        "kassit":">=0.1.5" 
-,		"mongoose":"latest"   
+        "kassit":">=0.1.5"
+,		"mongoose": "" 
     }
 ,   "devDependencies": {}
 ,   "engines": {

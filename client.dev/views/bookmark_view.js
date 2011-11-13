@@ -7,7 +7,7 @@
     child.prototype = new ctor;
     child.__super__ = parent.prototype;
     return child;
-  };
+  }, __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
   Bookmark = Bukples.Views.Bookmark = {};
   Templates = Bukples.Templates;
   Bookmark.Index = (function() {
@@ -28,15 +28,16 @@
       });
       return $('#header').html(view.render());
     };
-    Index.prototype.addAll = function() {
-      return this.collection.each(this.addOne);
-    };
     Index.prototype.addOne = function(bookmark) {
       var view;
+      console.log(this.collection);
       view = new Bookmark.Bookmark({
         model: bookmark
       });
       return $('#bookmarks').prepend(view.render());
+    };
+    Index.prototype.addAll = function() {
+      return this.collection.each(this.addOne);
     };
     Index.prototype.render = function() {
       $(this.el).html(this.template.render());
@@ -72,8 +73,14 @@
       var model;
       e.preventDefault();
       model = new Bukples.Models.Bookmark;
-      model.set(this.attributes());
-      return this.collection.add(model);
+      return model.save(this.attributes(), {
+        success: __bind(function(model, response) {
+          return this.collection.add(model);
+        }, this),
+        error: __bind(function(model, errors) {
+          return console.log(errors);
+        }, this)
+      });
     };
     New.prototype.attributes = function() {
       return {

@@ -5,8 +5,12 @@ class Bukples.Models.Bookmark extends Backbone.Model
     body: null
     title: null
 
-  url: -> "/bookmarks/#{@get('id')}"
+  url: -> if @id then "/bookmarks/#{@id}" else "/bookmarks"
 
     # return false if validates correctly, else returns a value (or some)
-  validate: (attr) ->
-    return false
+#  validate: (attr) ->
+#    return false
+
+  toJSON: ->
+    body: @get('body')
+    title: @get('title')

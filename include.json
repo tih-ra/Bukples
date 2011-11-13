@@ -26,5 +26,8 @@
     ]
 ,   "server": [
         { "url": "server.coffee" }
+,		{ "url": "api/controllers/bookmarks.coffee" }
+,		{ "url": "api/models/bookmark.coffee" }
     ]
+
 }
