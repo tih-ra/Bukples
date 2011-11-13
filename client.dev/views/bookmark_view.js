@@ -19,7 +19,9 @@
     Index.prototype.initialize = function() {
       new Bukples.Views.Root.Layout;
       _.bindAll(this, 'addOne', 'addAll');
-      return this.collection.bind('add', this.addOne, this);
+      this.collection.bind('add', this.addOne, this);
+      this.collection.bind('reset', this.addAll, this);
+      return this.collection.fetch();
     };
     Index.prototype.addForm = function() {
       var view;
@@ -30,7 +32,6 @@
     };
     Index.prototype.addOne = function(bookmark) {
       var view;
-      console.log(this.collection);
       view = new Bookmark.Bookmark({
         model: bookmark
       });
@@ -41,7 +42,6 @@
     };
     Index.prototype.render = function() {
       $(this.el).html(this.template.render());
-      this.addAll();
       return this.addForm();
     };
     return Index;

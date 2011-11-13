@@ -15,6 +15,9 @@ class Bookmark.Index extends Backbone.View
     _.bindAll @, 'addOne', 'addAll'
 
     @collection.bind('add', @addOne, @)
+    @collection.bind('reset', @addAll, @)
+    #@collection.bind('all',   @render, @)
+    @collection.fetch()
     
   addForm: ->
     view = new Bookmark.New(collection: @collection)
@@ -22,7 +25,6 @@ class Bookmark.Index extends Backbone.View
 
   
   addOne: (bookmark) ->
-    console.log(@collection)
     view = new Bookmark.Bookmark(model: bookmark)
     $('#bookmarks').prepend(view.render()) 
 
@@ -31,9 +33,7 @@ class Bookmark.Index extends Backbone.View
 
   render: ->
     $(@el).html @template.render()
-    @addAll()
     @addForm()
-    #$('#header').html @el
 
 class Bookmark.Bookmark extends Backbone.View
 
