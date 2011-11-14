@@ -6,16 +6,19 @@ Templates = Bukples.Templates
 
 # declaring the index class        
 class Bookmark.Index extends Backbone.View
-	
   
+
   initialize: ->
     new Bukples.Views.Root.Layout
+    
+    @collection = new Bukples.Collections.Bookmarks
     @languages = new Bukples.Collections.Languages
-
-    _.bindAll @, 'addOne', 'addAll'
-
+    
+    @language = @options.language    
+    console.log @language
+    _.bindAll @, 'addOne', 'addAll', 'addFilter'
     @collection.bind('add', @addOne, @)
-    @collection.bind('reset', @addAll, @)
+    @collection.bind('reset', (if typeof(@language) is 'undefined' then @addAll else @addFilter), @)
     @collection.bind('all',   @render, @)
     @collection.fetch()
     
@@ -31,10 +34,16 @@ class Bookmark.Index extends Backbone.View
     view = new Bookmark.Bookmark(model: bookmark)
     $('#bookmarks').prepend(view.render().el)
      
-
+  
   addAll: ->
+    $('#bookmarks').html('')
     @collection.each(@addOne)
-
+  
+  addFilter: ->
+    $('#bookmarks').html('')
+    collection = new Bukples.Collections.Bookmarks(@collection.filtered(@language))
+    collection.each(@addOne)
+	 
   render: ->
     hljs.initHighlighting()
     @addForm()

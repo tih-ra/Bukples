@@ -25,6 +25,7 @@
 ,       { "url": "models/language.coffee" }
 ,       { "url": "collections/languages.coffee" }
 
+,       { "url": "style/bootstrap.min.css" }
 ,       { "url": "style/master.less" }
 ,       { "url": "style/highlight.css" }
 

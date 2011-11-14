@@ -1,17 +1,7 @@
 div class: 'topbar', ->
   div class: 'topbar-inner', ->
     div class: 'container-fluid', ->
-      a class: 'brand', href: '#', 'Project name'
-      ul class: 'nav', ->
-        li class: 'active', ->
-          a href: '#', 'Home'
-        li ->
-          a href: '#about', 'About'
-        li ->
-          a href: '#contact', 'Contact'
-      p class: 'pull-right', ->
-        text 'Logged in as'
-        a href: '#', 'username'
+      a class: 'brand', href: '#', 'Bukples :: code social bookmarking'
 div class: 'container-fluid', ->
   div class: 'sidebar', ->
     div id: 'languages', class: 'well', ->
@@ -21,4 +11,4 @@ div class: 'container-fluid', ->
     div class: 'row', id: 'bookmarks'
     hr()
     footer ->
-      p '&copy; Company 2011'
+      p '&copy; Andriy Bazyuta 2011'

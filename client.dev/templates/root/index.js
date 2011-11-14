@@ -1,1 +1,0 @@
-(function(){Bukples.Templates['root.index'] = new Kassit.Template.KUP("function(){div(function(){return h1(\"Welcome! Start editing this template\")})}")}).call(this)

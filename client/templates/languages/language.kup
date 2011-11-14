@@ -1,1 +1,2 @@
-a @model.get('name')
+a class: 'language', href: "#language/#{@model.get('code')}", ->
+  @model.get('name')
