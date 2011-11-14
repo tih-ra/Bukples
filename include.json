@@ -20,6 +20,11 @@
 ,       { "url": "models/bookmark.coffee" }
 ,       { "url": "collections/bookmarks.coffee" }
 
+,       { "url": "templates/languages/language.kup" }
+,       { "url": "views/language_view.coffee" }
+,       { "url": "models/language.coffee" }
+,       { "url": "collections/languages.coffee" }
+
 ,       { "url": "style/master.less" }
 
 
@@ -28,6 +33,7 @@
         { "url": "server.coffee" }
 ,		{ "url": "api/controllers/bookmarks.coffee" }
 ,		{ "url": "api/models/bookmark.coffee" }
+,		{ "url": "api/controllers/languages.coffee" }
     ]
 
 }

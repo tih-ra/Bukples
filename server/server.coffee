@@ -21,9 +21,12 @@ app.get '/static/*', (req, res) -> res.sendfile('static/' + req.params[0])
 #
 # Rest
 require.paths.unshift('./server.dev/api');
-bookmark = require('controllers/bookmarks.js')
-app.post('/bookmarks', bookmark.post)
-app.get('/bookmarks', bookmark.list)
+bookmarks = require('controllers/bookmarks.js')
+app.post('/bookmarks', bookmarks.post)
+app.get('/bookmarks', bookmarks.list)
+
+languages = require('controllers/languages.js')
+app.get('/languages', languages.list)
 #
 # serving only dev/prod files
 (app.get '/client.dev/*', (req, res) ->  res.sendfile('client.dev/' + req.params[0])) if app.mode is 'dev'

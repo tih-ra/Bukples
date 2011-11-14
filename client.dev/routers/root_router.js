@@ -26,10 +26,9 @@
       var bookbarks, view;
       console.log('Bookmark.index() was called upon!');
       bookbarks = new Bukples.Collections.Bookmarks;
-      view = new Views.Bookmark.Index({
+      return view = new Views.Bookmark.Index({
         collection: bookbarks
       });
-      return view.render();
     };
     return Root;
   })();

@@ -14,37 +14,8 @@ div class: 'topbar', ->
         a href: '#', 'username'
 div class: 'container-fluid', ->
   div class: 'sidebar', ->
-    div class: 'well', ->
-      h5 'Sidebar'
-      ul ->
-        li ->
-          a href: '#', 'Link'
-        li ->
-          a href: '#', 'Link'
-        li ->
-          a href: '#', 'Link'
-        li ->
-          a href: '#', 'Link'
-      h5 'Sidebar'
-      ul ->
-        li ->
-          a href: '#', 'Link'
-        li ->
-          a href: '#', 'Link'
-        li ->
-          a href: '#', 'Link'
-        li ->
-          a href: '#', 'Link'
-        li ->
-          a href: '#', 'Link'
-        li ->
-          a href: '#', 'Link'
-      h5 'Sidebar'
-      ul ->
-        li ->
-          a href: '#', 'Link'
-        li ->
-          a href: '#', 'Link'
+    div id: 'languages', class: 'well', ->
+      h5 'Languages'
   div class: 'content', ->
     div id: 'header', class: 'hero-unit'
     div class: 'row', id: 'bookmarks', ->

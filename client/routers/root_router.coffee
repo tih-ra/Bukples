@@ -17,4 +17,4 @@ class Bukples.Routers.Root extends Backbone.Router
     bookbarks = new Bukples.Collections.Bookmarks
     
     view = new Views.Bookmark.Index(collection: bookbarks)
-    view.render()
+    

@@ -1,0 +1,1 @@
+(function(){Bukples.Templates['languages.language'] = new Kassit.Template.KUP("function(){a(this.model.get(\"name\"))}")}).call(this)

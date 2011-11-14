@@ -16,13 +16,18 @@ class Bookmark.Index extends Backbone.View
 
     @collection.bind('add', @addOne, @)
     @collection.bind('reset', @addAll, @)
-    #@collection.bind('all',   @render, @)
+    @collection.bind('all',   @render, @)
     @collection.fetch()
     
   addForm: ->
     view = new Bookmark.New(collection: @collection)
     $('#header').html(view.render())
 
+  addLanguages: ->
+    console.log 'lan'
+    languages = new Bukples.Collections.Languages
+    view = new Bukples.Views.Language.List(collection: languages)
+    $('#languages').html(view.render())
   
   addOne: (bookmark) ->
     view = new Bookmark.Bookmark(model: bookmark)
@@ -34,6 +39,7 @@ class Bookmark.Index extends Backbone.View
   render: ->
     $(@el).html @template.render()
     @addForm()
+    @addLanguages()
 
 class Bookmark.Bookmark extends Backbone.View
 

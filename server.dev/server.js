@@ -1,5 +1,5 @@
 (function() {
-  var Bukples, app, bookmark, express, mongoose;
+  var Bukples, app, bookmarks, express, languages, mongoose;
   express = require('kassit/node_modules/express');
   mongoose = require('mongoose');
   app = Bukples = process['Bukples'] = express.createServer();
@@ -27,9 +27,11 @@
     return res.sendfile('static/' + req.params[0]);
   });
   require.paths.unshift('./server.dev/api');
-  bookmark = require('controllers/bookmarks.js');
-  app.post('/bookmarks', bookmark.post);
-  app.get('/bookmarks', bookmark.list);
+  bookmarks = require('controllers/bookmarks.js');
+  app.post('/bookmarks', bookmarks.post);
+  app.get('/bookmarks', bookmarks.list);
+  languages = require('controllers/languages.js');
+  app.get('/languages', languages.list);
   if (app.mode === 'dev') {
     app.get('/client.dev/*', function(req, res) {
       return res.sendfile('client.dev/' + req.params[0]);

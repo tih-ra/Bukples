@@ -21,6 +21,7 @@
       _.bindAll(this, 'addOne', 'addAll');
       this.collection.bind('add', this.addOne, this);
       this.collection.bind('reset', this.addAll, this);
+      this.collection.bind('all', this.render, this);
       return this.collection.fetch();
     };
     Index.prototype.addForm = function() {
@@ -29,6 +30,15 @@
         collection: this.collection
       });
       return $('#header').html(view.render());
+    };
+    Index.prototype.addLanguages = function() {
+      var languages, view;
+      console.log('lan');
+      languages = new Bukples.Collections.Languages;
+      view = new Bukples.Views.Language.List({
+        collection: languages
+      });
+      return $('#languages').html(view.render());
     };
     Index.prototype.addOne = function(bookmark) {
       var view;
@@ -42,7 +52,8 @@
     };
     Index.prototype.render = function() {
       $(this.el).html(this.template.render());
-      return this.addForm();
+      this.addForm();
+      return this.addLanguages();
     };
     return Index;
   })();
