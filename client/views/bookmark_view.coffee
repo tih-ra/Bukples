@@ -29,7 +29,8 @@ class Bookmark.Index extends Backbone.View
   
   addOne: (bookmark) ->
     view = new Bookmark.Bookmark(model: bookmark)
-    $('#bookmarks').prepend(view.render().el) 
+    $('#bookmarks').prepend(view.render().el)
+     
 
   addAll: ->
     @collection.each(@addOne)
@@ -77,13 +78,15 @@ class Bookmark.New extends Backbone.View
     model.save @attributes(),
       success: (model, response) =>
         @collection.add model
+        console.log model
 
       error: (model, errors) =>
         console.log errors
 
   attributes: ->
-    title: 'test title'
+    title: @$('input[name="title"]').val()
     body: @$('textarea[name="body"]').val()
+    language: @$('select').val()
 
   render: -> 
     $(@el).html @template.render()

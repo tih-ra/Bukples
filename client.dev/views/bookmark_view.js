@@ -98,7 +98,8 @@
       model = new Bukples.Models.Bookmark;
       return model.save(this.attributes(), {
         success: __bind(function(model, response) {
-          return this.collection.add(model);
+          this.collection.add(model);
+          return console.log(model);
         }, this),
         error: __bind(function(model, errors) {
           return console.log(errors);
@@ -107,8 +108,9 @@
     };
     New.prototype.attributes = function() {
       return {
-        title: 'test title',
-        body: this.$('textarea[name="body"]').val()
+        title: this.$('input[name="title"]').val(),
+        body: this.$('textarea[name="body"]').val(),
+        language: this.$('select').val()
       };
     };
     New.prototype.render = function() {

@@ -1,6 +1,8 @@
 h2 @model.get('title')
+span class: 'label success', ->
+  @model.get('language')
 p ->
-  pre -> 
-    code class: 'coffee', -> @model.get('body')
+  pre ->
+    code class: @model.get('language'), -> @model.get('body')
 p ->
   a class: 'btn', href: '#', 'View details &raquo;'
