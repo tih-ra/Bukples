@@ -1,6 +1,6 @@
 # Bukples
 
-  Application for code storing
+  node.js application for code storing
   mainly built and depends on [Node.JS](http://nodejs.org), [CoffeeScript](http://jashkenas.github.com/coffee-script/) and [Backbone](http://http://documentcloud.github.com/backbone/)
 
 
