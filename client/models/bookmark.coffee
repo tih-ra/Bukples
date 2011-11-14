@@ -4,6 +4,7 @@ class Bukples.Models.Bookmark extends Backbone.Model
   defaults:
     body: null
     title: null
+    language: null
 
   url: -> if @id then "/bookmarks/#{@id}" else "/bookmarks"
 
@@ -14,3 +15,4 @@ class Bukples.Models.Bookmark extends Backbone.Model
   toJSON: ->
     body: @get('body')
     title: @get('title')
+    language: @get('language')

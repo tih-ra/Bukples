@@ -11,18 +11,17 @@ class Language.List extends Backbone.View
 
     @collection.bind('add', @addOne, @)
     @collection.bind('reset', @addAll, @)
-    @collection.bind('all',   @render, @)
     @collection.fetch()
 
   addOne: (language) ->
     view = new Language.Language(model: language)
-    $(@el).prepend(view.render()) 
+    $(@el).prepend(view.render().el) 
 
   addAll: ->
     @collection.each(@addOne)
 
   render: ->
-    $(@el)
+    @
 
 
 class Language.Language extends Backbone.View
@@ -31,4 +30,26 @@ class Language.Language extends Backbone.View
   tagName: 'li'
 
   render: ->
-    $(@el).html @template.render(model: @model)
+    $(@el).html(@template.render(model: @model))
+    @
+
+class Language.Select extends Backbone.View
+  tagName: 'select'
+
+  initialize: ->
+    _.bindAll @, 'addOptions', 'addOption'
+	
+    @collection.bind('reset', @addOptions, @)
+   
+  
+  addOptions: ->
+    @collection.each(@addOption)
+
+  addOption: (language) ->
+    view = new Backbone.View
+    option = view.make 'option', {value: language.get('code')}, language.get('name')
+    $(@el).prepend(option)
+    
+  render: ->
+    
+    @

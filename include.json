@@ -5,6 +5,7 @@
 ,       { "url": "lib/backbone.js" }
 ,       { "url": "lib/coffeekup.js", "method": "none" }
 ,       { "url": "lib/kassit.coffee"}
+,       { "url": "lib/highlight.js"}
 
 ,       { "url": "client.coffee" }
 
@@ -13,7 +14,6 @@
 ,       { "url": "views/root_view.coffee" }
 ,       { "url": "routers/root_router.coffee" }
 
-,       { "url": "templates/bookmarks/index.kup" }
 ,       { "url": "templates/bookmarks/new.kup" }
 ,       { "url": "templates/bookmarks/bookmark.kup" }
 ,       { "url": "views/bookmark_view.coffee" }
@@ -26,6 +26,8 @@
 ,       { "url": "collections/languages.coffee" }
 
 ,       { "url": "style/master.less" }
+,       { "url": "style/highlight.css" }
+
 
 
     ]

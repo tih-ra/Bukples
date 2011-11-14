@@ -2,44 +2,62 @@
   var Languages;
   Languages = [
     {
-      id: "01",
+      code: "ruby",
       name: "Ruby"
     }, {
-      id: "01",
+      code: "javascript",
       name: "JavaScript"
     }, {
-      id: "03",
+      code: "coffee",
       name: "CoffeeScript"
     }, {
-      id: "04",
+      code: "bash",
       name: "Bash (shell)"
     }, {
-      id: "05",
-      name: "HTML / XML"
+      code: "html",
+      name: "HTML"
     }, {
-      id: "06",
+      code: "java",
       name: "Java"
     }, {
-      id: "07",
-      name: "YAML"
-    }, {
-      id: "08",
+      code: "css",
       name: "CSS"
     }, {
-      id: "09",
-      name: "HTML (ERB / Rails)"
+      code: "objectivec",
+      name: "Objective-C"
     }, {
-      id: "10",
-      name: "Objective-C/C++"
-    }, {
-      id: "11",
-      name: "Plain text<"
-    }, {
-      id: "12",
+      code: "python",
       name: "Python"
     }, {
-      id: "13",
+      code: "sql",
       name: "SQL"
+    }, {
+      code: "perl",
+      name: "Perl"
+    }, {
+      code: "php",
+      name: "PHP"
+    }, {
+      code: "scala",
+      name: "Scala"
+    }, {
+      code: "go",
+      name: "Go"
+    }, {
+      code: "xml",
+      name: "Xml"
+    }, {
+      code: "diff",
+      name: "Diff"
+    }, {
+      code: "cpp",
+      name: "C++"
+    }, {
+      code: "erlang",
+      name: "Erlang"
+    }, {
+      code: "cmake",
+      name: "CMake"
     }
   ];
   exports.list = function(req, res) {

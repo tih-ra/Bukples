@@ -15,9 +15,9 @@
     function Index() {
       Index.__super__.constructor.apply(this, arguments);
     }
-    Index.prototype.template = Templates['bookmarks.index'];
     Index.prototype.initialize = function() {
       new Bukples.Views.Root.Layout;
+      this.languages = new Bukples.Collections.Languages;
       _.bindAll(this, 'addOne', 'addAll');
       this.collection.bind('add', this.addOne, this);
       this.collection.bind('reset', this.addAll, this);
@@ -27,33 +27,33 @@
     Index.prototype.addForm = function() {
       var view;
       view = new Bookmark.New({
-        collection: this.collection
+        collection: this.collection,
+        languages: this.languages
       });
-      return $('#header').html(view.render());
+      return $('#header').html(view.render().el);
     };
     Index.prototype.addLanguages = function() {
-      var languages, view;
-      console.log('lan');
-      languages = new Bukples.Collections.Languages;
+      var view;
       view = new Bukples.Views.Language.List({
-        collection: languages
+        collection: this.languages
       });
-      return $('#languages').html(view.render());
+      return $('#languages').html(view.render().el);
     };
     Index.prototype.addOne = function(bookmark) {
       var view;
       view = new Bookmark.Bookmark({
         model: bookmark
       });
-      return $('#bookmarks').prepend(view.render());
+      return $('#bookmarks').prepend(view.render().el);
     };
     Index.prototype.addAll = function() {
       return this.collection.each(this.addOne);
     };
     Index.prototype.render = function() {
-      $(this.el).html(this.template.render());
+      hljs.initHighlighting();
       this.addForm();
-      return this.addLanguages();
+      this.addLanguages();
+      return this;
     };
     return Index;
   })();
@@ -63,11 +63,12 @@
       Bookmark.__super__.constructor.apply(this, arguments);
     }
     Bookmark.prototype.template = Templates['bookmarks.bookmark'];
-    Bookmark.prototype.className = 'span5';
+    Bookmark.prototype.className = 'span8';
     Bookmark.prototype.render = function() {
-      return $(this.el).html(this.template.render({
+      $(this.el).html(this.template.render({
         model: this.model
       }));
+      return this;
     };
     return Bookmark;
   })();
@@ -79,6 +80,17 @@
     New.prototype.template = Templates['bookmarks.new'];
     New.prototype.events = {
       "submit form": "save"
+    };
+    New.prototype.initialize = function() {
+      this.collection = this.options.collection;
+      return this.languages = this.options.languages;
+    };
+    New.prototype.languageSelect = function() {
+      var view;
+      view = new Bukples.Views.Language.Select({
+        collection: this.languages
+      });
+      return this.$('#languages_select').append(view.render().el);
     };
     New.prototype.save = function(e) {
       var model;
@@ -100,7 +112,9 @@
       };
     };
     New.prototype.render = function() {
-      return $(this.el).html(this.template.render());
+      $(this.el).html(this.template.render());
+      this.languageSelect();
+      return this;
     };
     return New;
   })();

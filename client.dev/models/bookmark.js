@@ -14,7 +14,8 @@
     }
     Bookmark.prototype.defaults = {
       body: null,
-      title: null
+      title: null,
+      language: null
     };
     Bookmark.prototype.url = function() {
       if (this.id) {
@@ -26,7 +27,8 @@
     Bookmark.prototype.toJSON = function() {
       return {
         body: this.get('body'),
-        title: this.get('title')
+        title: this.get('title'),
+        language: this.get('language')
       };
     };
     return Bookmark;

@@ -14,10 +14,10 @@
     }
     Language.prototype.defaults = {
       name: null,
-      id: null
+      code: null
     };
     Language.prototype.url = function() {
-      return "/languages/" + (this.get('id'));
+      return "/languages/" + (this.get('code'));
     };
     Language.prototype.validate = function(attr) {
       return false;
@@ -25,7 +25,7 @@
     Language.prototype.toJSON = function() {
       return {
         name: this.get('name'),
-        id: this.get('id')
+        id: this.get('code')
       };
     };
     return Language;

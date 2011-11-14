@@ -2,6 +2,9 @@ form class: 'form-stacked', ->
   fieldset ->
     legend -> h1 'Add Your Code'
     div class: 'clearfix', ->
+      div class: 'input', id: 'languages_select', ->
+        input name: 'title', class: 'span11'
+    div class: 'clearfix', ->
       div class: 'input', ->
         textarea name: 'body', rows: 6, class: 'span15'
     div class: 'clearfix', ->

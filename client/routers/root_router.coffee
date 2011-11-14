@@ -14,7 +14,6 @@ class Bukples.Routers.Root extends Backbone.Router
 
   bookmarks: ->
     console.log 'Bookmark.index() was called upon!'
-    bookbarks = new Bukples.Collections.Bookmarks
-    
-    view = new Views.Bookmark.Index(collection: bookbarks)
+    bookmarks = new Bukples.Collections.Bookmarks
+    new Views.Bookmark.Index(collection: bookmarks)
     

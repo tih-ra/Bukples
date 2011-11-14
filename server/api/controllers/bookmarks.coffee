@@ -4,6 +4,7 @@ exports.post = (req, res) ->
   bookmark = new Bookmark(
     title: req.body.title
     body: req.body.body
+    language: req.body.language
   ).save()
   res.send(bookmark)
 

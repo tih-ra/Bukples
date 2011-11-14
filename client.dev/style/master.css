@@ -2,3 +2,6 @@ body {
   font-family: Verdana, Helvetica, Sans-Serif;
   padding-top: 60px;
 }
+#languages_select > input {
+  margin-right: 28px;
+}

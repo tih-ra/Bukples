@@ -7,10 +7,10 @@ Templates = Bukples.Templates
 # declaring the index class        
 class Bookmark.Index extends Backbone.View
 	
-  template: Templates['bookmarks.index']
-
+  
   initialize: ->
     new Bukples.Views.Root.Layout
+    @languages = new Bukples.Collections.Languages
 
     _.bindAll @, 'addOne', 'addAll'
 
@@ -20,34 +20,38 @@ class Bookmark.Index extends Backbone.View
     @collection.fetch()
     
   addForm: ->
-    view = new Bookmark.New(collection: @collection)
-    $('#header').html(view.render())
+    view = new Bookmark.New({collection: @collection, languages: @languages})
+    $('#header').html(view.render().el)
 
   addLanguages: ->
-    console.log 'lan'
-    languages = new Bukples.Collections.Languages
-    view = new Bukples.Views.Language.List(collection: languages)
-    $('#languages').html(view.render())
+    view = new Bukples.Views.Language.List(collection: @languages)
+    $('#languages').html(view.render().el)
   
   addOne: (bookmark) ->
     view = new Bookmark.Bookmark(model: bookmark)
-    $('#bookmarks').prepend(view.render()) 
+    $('#bookmarks').prepend(view.render().el) 
 
   addAll: ->
     @collection.each(@addOne)
 
   render: ->
-    $(@el).html @template.render()
+    hljs.initHighlighting()
     @addForm()
     @addLanguages()
+    
+    @
+    
 
 class Bookmark.Bookmark extends Backbone.View
 
   template: Templates['bookmarks.bookmark']
-  className: 'span5'
+  className: 'span8'
 
   render: ->
+    
     $(@el).html @template.render(model: @model)
+    @
+    
 
 class Bookmark.New extends Backbone.View
 	
@@ -55,6 +59,15 @@ class Bookmark.New extends Backbone.View
 
   events:
     "submit form": "save"
+
+  initialize: ->
+    @collection = @options.collection
+    @languages = @options.languages
+	
+  languageSelect: ->
+    view = new Bukples.Views.Language.Select(collection: @languages)
+    @$('#languages_select').append(view.render().el)
+	
 
   save: (e) ->
     e.preventDefault()
@@ -74,3 +87,6 @@ class Bookmark.New extends Backbone.View
 
   render: -> 
     $(@el).html @template.render()
+    @languageSelect()
+
+    @

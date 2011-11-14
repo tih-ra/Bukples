@@ -5,7 +5,8 @@
     var bookmark;
     bookmark = new Bookmark({
       title: req.body.title,
-      body: req.body.body
+      body: req.body.body,
+      language: req.body.language
     }).save();
     return res.send(bookmark);
   };

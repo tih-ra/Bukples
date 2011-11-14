@@ -23,11 +23,11 @@
       return new Views.Root.Index;
     };
     Root.prototype.bookmarks = function() {
-      var bookbarks, view;
+      var bookmarks;
       console.log('Bookmark.index() was called upon!');
-      bookbarks = new Bukples.Collections.Bookmarks;
-      return view = new Views.Bookmark.Index({
-        collection: bookbarks
+      bookmarks = new Bukples.Collections.Bookmarks;
+      return new Views.Bookmark.Index({
+        collection: bookmarks
       });
     };
     return Root;
