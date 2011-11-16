@@ -40,4 +40,4 @@ app.get('/languages', languages.list)
 (app.get '/client.prod/*', (req, res) -> res.sendfile('client.prod/' + req.params[0])) if app.mode is 'prod'
         
 console.log "  ::loading: Bukples is up and serving at http://localhost:#{app.port}"
-app.listen(app.port);
+app.listen(app.port)
