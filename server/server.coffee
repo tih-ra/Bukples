@@ -1,13 +1,18 @@
+require.paths.unshift('./node_modules')
 express = require('kassit/node_modules/express')
 mongoose = require('mongoose')
+cf = require("cloudfoundry")
 
 app = Bukples = process['Bukples'] = express.createServer()
 app.mode = if !(getMode?()) then 'prod' else getMode()
-app.port = 3001
+app.port = cf.getAppPort()
 
 app.use(express.logger(format: "\u001b[1m :date \u001b[1m:method\u001b[0m \u001b[33m:url\u001b[0m :response-time ms\u001b[0m :status")) unless app.mode is 'prod'
 
-mongoose.connect('mongodb://localhost/bukples');
+
+# CONNECT TO MONGOOSE FOR CLOUD FOUNDRY
+mongoConfig = cf.getServiceConfig("bukples") 
+app.db = mongoose.createConnection("mongo://" + mongoConfig.username + ":" + mongoConfig.password + "@" + mongoConfig.hostname + ":" + mongoConfig.port + "/" + mongoConfig.db)
 
 app.use(express.bodyParser())
 app.use(express.cookieParser())

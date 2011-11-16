@@ -9,7 +9,8 @@
 ,   "bin": {}
 ,   "dependencies": {
         "kassit":">=0.1.5"
-,		"mongoose": "" 
+,		"mongoose": ""
+,       "cloudfoundry": ">= 0.1.0 < 1.0.0" 
     }
 ,   "devDependencies": {}
 ,   "engines": {
